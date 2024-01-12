@@ -30,23 +30,29 @@ while opcao_valida != True:
 while(contador <= tentativa):
     print(f'Você esta na tetantiva {contador} de {tentativa}\n')
     print('Escolha um numero entre 1 e 100!\n')
-    chute = int(input('Digite o seu chute: '))
+    try:
+        chute = int(input('Digite o seu chute: '))
 
-    maior = chute > numero_secreto
-    menor = chute < numero_secreto
+        maior = chute > numero_secreto
+        menor = chute < numero_secreto
 
-    if (chute == numero_secreto ):
-        print('PARABENS VOCÊ GANHOU !!!')
-        print(f'Você finalizou com {pontos}!!!')
-        break
-    elif menor :
-        print('Você errou, o numero chutado é MENOR! tente novamente')
-        pontos_perdidos = abs(chute - numero_secreto)
-        print(f'Você perdeu {pontos_perdidos}')
-        pontos = abs((chute - numero_secreto) - pontos)
-    elif maior:
-        print('Você errou, o numero chutado é MAIOR! tente novamente')
-        pontos_perdidos = abs(chute - numero_secreto)
-        print(f'Você perdeu {pontos_perdidos}')
-        pontos =  abs((chute - numero_secreto)- pontos)
+        if(chute < 1 or chute > 100):
+            print('Numero invalido !!')
+
+        elif(chute == numero_secreto ):
+            print('PARABENS VOCÊ GANHOU !!!')
+            print(f'Você finalizou com {pontos}!!!')
+            break
+        elif menor :
+            print('Você errou, o numero chutado é MENOR! tente novamente')
+            pontos_perdidos = abs(chute - numero_secreto)
+            print(f'Você perdeu {pontos_perdidos}')
+            pontos =  abs((numero_secreto-chute )- pontos)
+        elif maior:
+            print('Você errou, o numero chutado é MAIOR! tente novamente')
+            pontos_perdidos = abs(chute - numero_secreto)
+            print(f'Você perdeu {pontos_perdidos}')
+            pontos =  abs((chute - numero_secreto )- pontos)
+    except:
+        print('Opção invalida')
     contador +=1
